@@ -1,27 +1,5 @@
 def permutations(str)
-  return str.split(//).permutation.map &:join
-  l = str.length
-
-  return [str] if l <= 1
-
-  perms = []
-  perms << str
-  perms << str.reverse
-
-  first_char = str[0]
-  all_rest_perms = permutations str[1...l]
-
-  for rest_perm in all_rest_perms do
-    perm_l = rest_perm.length
-
-    0.upto(perm_l - 1) do |i|
-      new_perm = "%s%s%s" % [rest_perm[0...i], first_char, rest_perm[i...perm_l]]
-      #p new_perm
-      perms << new_perm unless perms.include?(new_perm)
-    end
-  end
-
-  perms
+  str.split(//).permutation.map &:join
 end
 
 st = Time.now
